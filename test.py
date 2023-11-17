@@ -1,7 +1,6 @@
 import imaplib
 import email
 import os
-
 from credentials import useName, passWord
 
 imap_url = 'imap.gmail.com'
@@ -15,7 +14,7 @@ data = my_mail.search(None, 'ALL')
 mail_ids = data[1]
 id_list = mail_ids[0].split()
 # print(id_list)
-first_email_id = int(id_list[-10])  #default values # 0
+first_email_id = int(id_list[0])  #default values # 0 
 latest_email_id = int(id_list[-1])  #default values # -1
 print("1st pass")
 for i in range(latest_email_id, first_email_id, -1):
@@ -36,7 +35,7 @@ for i in range(latest_email_id, first_email_id, -1):
             print('Date: ' + email_date + '\n')
             print("3rd pass")
 
-            if 'gajanantodetti1998@gmail.com' in email_from:
+            if 'Google' in email_from:   #instead of google you can any you specific keywords
                 print("4th pass")
                 for part in msg.walk():
                     if part.get_content_maintype() == 'multipart':
@@ -47,7 +46,7 @@ for i in range(latest_email_id, first_email_id, -1):
 
                     if part.get_content_type() == 'application/pdf':
                         fileName = part.get_filename()
-                        filePath = os.path.join('E:/invoice2data/emailfiles', fileName)
+                        filePath = os.path.join('E:/invoice2data/emailfiles', fileName)  #To download pdfs
                         print("6th pass")
                         if not os.path.isfile(filePath):
                             with open(filePath, 'wb') as fp:
