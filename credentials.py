@@ -1,2 +1,2 @@
-useName = 'gajanantodetti3993@gmail.com'
-passWord = 'ykha gmen lunz najb'
+useName = 'Enter your email address'
+passWord = 'Creat an add password add here'
